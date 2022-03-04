@@ -9,18 +9,14 @@ const app = express() // instantierer express
 
 // app er vores server (?)
 
-
-// OPGAVE. Lav en tom callback funktion
-// app.get("/",  () => {}) // bemærk get er skrevet med småt i metoden app.get
-
-
-
 // skal skrives for at få den til at pass body as json
-
 app.use(express.json())
 
 
+// OPGAVE. Lav en tom callback funktion
+// app.get("/",  () => {}) // bemærk get er skrevet med småt i metoden app.get
 // endpoint og callback function. Skriv req og res (standard konvention)
+// TERMOLOGI: app.get tager to argumenter, endpoint og en callback funktion med to argumenter, req og res.
 app.get("/",  (req, res) => {
     res.send({message: "Velkommen til serveren. Min første route!"})
 })
@@ -38,8 +34,7 @@ app.post("/", (req, res) => {
 // on the client data the server sends a response that contains an opinion
 
 app.get("/about", (req, res) => {
-    res.send({message: "Server er bare superduper!"})
-   
+    res.send({message: "Server er bare superduper!"})  
 })
 
 app.post("/opinion", (req, res) => {
@@ -48,11 +43,30 @@ app.post("/opinion", (req, res) => {
 })
 
 
+// OPGAVE. Write a get route that handles /libraries
+// localhost:8080/libraries?book1=hansen&book2=petersen
+// her bruges QUERY
+app.get('/libraries', (req, res) => {
+    res.send(req.query)
+})
+
+// http://localhost:8080/aboutclient/hans
+// her bruges PATHVARIABLE
+app.get('/aboutclient/:clientName', (req, res) => {
+    console.log(req.params.clientName)
+    res.send({ greeting: `Hej med ${req.params.clientName}`})
+})
+
+
+
 // app.listen skal være i bunden. God konvention. Så er det nemt for alle at se porten.
-app.listen(8080)
+app.listen(8080, (error) => {
+    console.log('Så tjører serveren på port', 8080)
+})
 
-
-
+// how do you send data in a GET request?
+// pathvariables: url: /thisisdynamic
+// query string:  url: ?key=value&key2=value
 
 
 

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vejrudsigten</title>
+</head>
+<body>
+    <h1>Vejrudsigten nu</h1>
+<div id="forecast">
+<p id="temperature"></p>
+</div>
+    <script>
+
+        fetch("http://api.weatherstack.com/current?access_key=361bbf753b816d01b117fffca0e5ed2b&query=Copenhagen")
+  .then(response => response.json())
+  .then(response => {
+      const temperatureDiv = document.getElementById("temperature")
+      console.log(response)
+      temperatureDiv.innerText = response.current.temperature + " grader"
+  })
+
+    </script>
+</body>
+</html>

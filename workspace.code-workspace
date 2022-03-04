@@ -1,0 +1,16 @@
+{
+  "folders": [
+    {
+      "path": "."
+    },
+    {
+      "path": "..\\..\\Anders\\Kea_Node_2022_Spring\\1"
+    },
+    {
+      "path": "..\\..\\Website_Clock"
+    }
+  ],
+  "settings": {
+    "liveServer.settings.multiRootWorkspaceName": "Website_Clock"
+  }
+}
